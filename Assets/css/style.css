@@ -1,0 +1,33 @@
+body {
+    background-color: #a79c93;
+    text-
+}
+
+.display-4 {
+    text-align: center;
+}
+
+.lead {
+    text-align: center;
+}
+
+.jumbotron  {
+    background: #03353E;
+    color: white;
+}
+
+#wins {
+    margin-left: 375px;
+}
+
+#losses {
+    margin-left: 375px;
+}
+
+#guesses {
+    margin-left: 375px;
+}
+
+#chosen {
+    margin-left: 375px;
+}
