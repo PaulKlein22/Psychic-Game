@@ -2,6 +2,7 @@ var letters = "abcdefghijklmnopqrstuvwxyz".split("");
 var wins = 0;
 var losses = 0;
 var guesses = 10;
+
 var randomLetter = letters[Math.floor(Math.random() * letters.length)];
 
 document.onkeypress = function(event) {
