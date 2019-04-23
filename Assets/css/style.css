@@ -1,32 +1,24 @@
 body {
-    background-color: #a79c93;
+  background-color: #a79c93;
 }
 
-.display-4 {
-    text-align: center;
-}
-
-.lead {
-    text-align: center;
-}
-
-.jumbotron  {
-    background: #03353E;
-    color: white;
+.jumbotron {
+  background: #03353e;
+  color: white;
 }
 
 #wins {
-    margin-left: 375px;
+  margin-left: 10px;
 }
 
 #losses {
-    margin-left: 375px;
+  margin-left: 10px;
 }
 
-#guesses {
-    margin-left: 375px;
+#guesses-left {
+  margin-left: 10px;
 }
 
-#chosen {
-    margin-left: 375px;
+#guesses-so-far {
+  margin-left: 10px;
 }

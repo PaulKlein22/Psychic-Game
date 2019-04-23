@@ -1,37 +1,53 @@
-var letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
-var wins = 0;
-var losses = 0;
-var guesses = 10;
-var guessedLetters = [];
+const letters = 'abcdefghijklmnopqrstuvwxyz'.split('');
+let guessedLetters = [];
+let letterToGuess = null;
+let guessesLeft = 10;
+let wins = 0;
+let losses = 0;
 
-var randomLetter = letters[Math.floor(Math.random() * letters.length)];
-
-document.onkeypress = function(event) {
-  var userGuess = event.key;
-
-  if (userGuess === randomLetter) {
-    wins++;
-    guesses = 10;
-    randomLetter = letters[Math.floor(Math.random() * letters.length)];
-  } else {
-    guesses--;
-  }
-  if (guesses === 0) {
-    losses++;
-    guesses = 10;
-    randomLetter = letters[Math.floor(Math.random() * letters.length)];
-  }
-
-  guessedLetters.push(userGuess);
-  updateGuesses();
-
-  document.getElementById('wins').innerHTML = 'Wins: ' + wins;
-  document.getElementById('losses').innerHTML = 'Losses: ' + losses;
-  document.getElementById('guesses').innerHTML =
-    'Remaining Guesses: ' + guesses;
+const updateGuessesLeft = () => {
+  document.getElementById('guesses-left').innerHTML = guessesLeft;
 };
 
-var updateGuesses = function() {
-  document.getElementById('chosen').innerHTML =
-    'Your Guesses So Far: ' + userGuess.join(', ');
+const updateLetterToGuess = () => {
+  letterToGuess = letters[Math.floor(Math.random() * letters.length)];
+};
+
+const updateGuessesSoFar = () => {
+  document.getElementById('guesses-so-far').innerHTML = guessedLetters.join(
+    ', '
+  );
+};
+
+const reset = function() {
+  guessesLeft = 10;
+  guessedLetters = [];
+  updateLetterToGuess();
+  updateGuessesLeft();
+  updateGuessesSoFar();
+};
+
+// Execute on page load.
+updateLetterToGuess();
+updateGuessesLeft();
+
+document.onkeydown = function(event) {
+  guessesLeft--;
+  const letter = String.fromCharCode(event.which).toLowerCase();
+  guessedLetters.push(letter);
+
+  updateGuessesLeft();
+  updateGuessesSoFar();
+
+  if (letter === letterToGuess) {
+    wins++;
+    document.getElementById('wins').innerHTML = wins;
+    reset();
+  }
+
+  if (guessesLeft === 0) {
+    losses++;
+    document.getElementById('losses').innerHTML = losses;
+    reset();
+  }
 };
